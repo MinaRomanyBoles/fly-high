@@ -69,12 +69,12 @@ const FlyHighWebsite = () => {
       about: "من نحن",
       services: "خدماتنا",
       contact: "اتصل بنا",
-      heroTitle: "فلاي هاي",
+      heroTitle: "FlyHigh",
       heroSubtitle: "وكالة الابتكار الرقمي",
       heroDescription: "نساعد الشركات على التحليق نحو آفاق جديدة بفضل حلول رقمية متطورة",
       learnMore: "اعرف المزيد",
       getStarted: "ابدأ الآن",
-      aboutTitle: "عن فلاي هاي",
+      aboutTitle: "FlyHigh عن",
       aboutText: "نحن وكالة رقمية رائدة متخصصة في الحلول المبتكرة التي تساعد الشركات على الارتقاء إلى آفاق جديدة. يقدم فريق خبرائنا نتائج استثنائية عبر الإبداع والتكنولوجيا والتفكير الاستراتيجي.",
       ourMission: "مهمتنا",
       missionText: "تمكين الشركات بحلول رقمية مبتكرة تدفع النمو والنجاح في العصر الرقمي.",
@@ -82,7 +82,7 @@ const FlyHighWebsite = () => {
       visionText: "أن نكون الشريك الرقمي الأكثر ثقة للأعمال حول العالم، ونضع معايير جديدة للتميز والابتكار.",
       advantages: "لماذا تختارنا",
       services: "خدماتنا",
-      teamWork: "فريق فلاي هاي",
+      teamWork: "FlyHigh فريق",
       teamText: "محترفون موهوبون يكرسون خبراتهم لتحقيق رؤيتك",
       footer: "© 2025 FlyHigh. جميع الحقوق محفوظة.",
       contactTitle: "تواصل معنا",
@@ -95,6 +95,15 @@ const FlyHighWebsite = () => {
   translations.ar.teamNav = translations.en.teamNav;
 
   const t = translations[language];
+
+  const navLinkClass = (extra = '') =>
+    `text-sm font-semibold uppercase tracking-wider transition ${extra} ${
+      darkMode
+        ? 'text-white hover:text-blue-200'
+        : scrolled
+        ? 'text-gray-900 hover:text-blue-600'
+        : 'text-white hover:text-blue-200'
+    }`;
 
   const advantages = [
     { 
@@ -331,11 +340,12 @@ const FlyHighWebsite = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#home" className={`text-sm font-semibold uppercase tracking-wider ${darkMode ? 'hover:text-blue-400' : 'hover:text-blue-500'} transition`}>{t.home}</a>
-              <a href="#about" className={`text-sm font-semibold uppercase tracking-wider ${darkMode ? 'hover:text-blue-400' : 'hover:text-blue-500'} transition`}>{t.about}</a>
-              <a href="#services" className={`text-sm font-semibold uppercase tracking-wider ${darkMode ? 'hover:text-blue-400' : 'hover:text-blue-500'} transition`}>{t.services}</a>
-              <a href="#team" className={`text-sm font-semibold uppercase tracking-wider ${darkMode ? 'hover:text-blue-400' : 'hover:text-blue-500'} transition`}>{t.teamNav}</a>
-              <a href="#contact" className={`text-sm font-semibold uppercase tracking-wider ${darkMode ? 'hover:text-blue-400' : 'hover:text-blue-500'} transition`}>{t.contact}</a>
+              <a href="#home" className={navLinkClass()}>{t.home}</a>
+              <a href="#about" className={navLinkClass()}>{t.about}</a>
+              <a href="#services" className={navLinkClass()}>{t.services}</a>
+              <a href="#our-advantages" className={navLinkClass()}>{t.ourAdvantages}</a>
+              <a href="#team" className={navLinkClass()}>{t.teamNav}</a>
+              <a href="#contact" className={navLinkClass()}>{t.contact}</a>
             </nav>
 
             {/* Controls */}
@@ -365,11 +375,12 @@ const FlyHighWebsite = () => {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <nav className="md:hidden mt-4 pb-4 space-y-3">
-              <a href="#home" className="block text-sm font-semibold uppercase">{t.home}</a>
-              <a href="#about" className="block text-sm font-semibold uppercase">{t.about}</a>
-              <a href="#services" className="block text-sm font-semibold uppercase">{t.services}</a>
-              <a href="#team" className="block text-sm font-semibold uppercase">{t.teamNav}</a>
-              <a href="#contact" className="block text-sm font-semibold uppercase">{t.contact}</a>
+              <a href="#home" className={navLinkClass('block')}>{t.home}</a>
+              <a href="#about" className={navLinkClass('block')}>{t.about}</a>
+              <a href="#services" className={navLinkClass('block')}>{t.services}</a>
+              <a href="#our-advantages" className={navLinkClass('block')}>{t.ourAdvantages}</a>
+              <a href="#team" className={navLinkClass('block')}>{t.teamNav}</a>
+              <a href="#contact" className={navLinkClass('block')}>{t.contact}</a>
             </nav>
           )}
         </div>
@@ -477,13 +488,13 @@ const FlyHighWebsite = () => {
               <div className="flex justify-between mb-4">
                 <button
                   onClick={() => scrollServices('prev')}
-                  className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition text-sm font-semibold"
+                  className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 transition text-sm font-semibold"
                 >
                   {language === 'en' ? 'Prev' : 'السابق'}
                 </button>
                 <button
                   onClick={() => scrollServices('next')}
-                  className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition text-sm font-semibold"
+                  className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 transition text-sm font-semibold"
                 >
                   {language === 'en' ? 'Next' : 'التالي'}
                 </button>
