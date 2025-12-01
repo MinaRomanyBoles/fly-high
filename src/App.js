@@ -308,12 +308,6 @@ const FlyHighWebsite = () => {
       image: '/Ahmed%20Abo%20El%20Magd.png'
     },
     { 
-      name: language === 'en' ? 'Mohamed Ragab' : 'محمد رجب', 
-      role: language === 'en' ? 'Managing Director' : 'المدير التنفيذي',
-      email: 'ragab@flyhigh.com.eg',
-      image: '/Mohamed%20Ragab.png'
-    },
-    { 
       name: language === 'en' ? 'Mohamed Tawfik' : 'محمد توفيق', 
       role: language === 'en' ? 'Senior Producer' : 'منتج أول',
       email: 'mtawfik@flyhigh.com.eg',
