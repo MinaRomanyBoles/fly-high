@@ -546,11 +546,13 @@ const FlyHighWebsite = () => {
             {advantages.map((advantage, index) => (
               <div
                 key={index}
-                className={`p-8 rounded-3xl ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-md text-center transition-all transform hover:-translate-y-2 interactive-shadow border ${darkMode ? 'border-gray-700' : 'border-gray-100'}`}
+                className={`p-8 rounded-3xl ${darkMode ? 'bg-[#111927] border-[#0f172a] text-white'
+                      : 'bg-[#f9fafb]/70 border-[#9ca3af] text-[#368ce8]'
+                    } shadow-md text-center transition-all transform hover:-translate-y-2 interactive-shadow border ${darkMode ? 'border-gray-700' : 'border-gray-100'}`}
                 onMouseMove={handleShadowMove}
                 onMouseLeave={handleShadowLeave}
               >
-                <div className="text-blue-500 flex justify-center mb-6">{advantage.icon}</div>
+                <div className={`flex justify-center mb-6 ${darkMode ? 'text-[#3587f4]' : 'text-blue-500'}`}>{advantage.icon}</div>
                 <h3 className="text-2xl font-bold mb-4">{advantage.title}</h3>
                 <p className="text-base leading-relaxed opacity-70">{advantage.description}</p>
               </div>
@@ -620,55 +622,61 @@ const FlyHighWebsite = () => {
           </div>
         </section>
 
-        {/* Our Advantages (additional) */}
-        <section
-          id="our-advantages"
-          className={`py-24 ${darkMode ? 'bg-[#1f2937] text-white' : 'bg-[#f9fafb] text-[#368ce8]'}`}
-        >
-          <div className="container mx-auto px-4">
-            <TypewriterText
-              text={t.ourAdvantages}
-              className="block text-5xl md:text-6xl font-bold text-center mb-6"
-            />
-            <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
-            <div
-              className={`rounded-3xl shadow-2xl p-8 md:p-12 border ${
-                darkMode
-                  ? 'bg-[#111927] text-white border-[#0f172a]'
-                  : 'bg-[#adadae] text-[#368ce8] border-[#9ca3af]'
-              }`}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {advantagesExtra.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`flex items-start gap-4 rounded-2xl p-6 hover:-translate-y-1 transition-transform border ${
-                      darkMode
-                        ? 'bg-[#111927]/80 border-[#0f172a] text-white'
-                        : 'bg-[#f9fafb]/70 border-[#9ca3af] text-[#368ce8]'
-                    }`}
-                  >
-                    <div
-                      className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${
-                        darkMode ? 'bg-white/15 text-white' : 'bg-white/70 text-[#368ce8]'
-                      }`}
-                    >
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                      <p className="text-base md:text-lg opacity-90 leading-relaxed">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
+      {/* Our Advantages (additional) */}
+      <section
+        id="our-advantages"
+        className={`py-24 relative ${darkMode ? 'bg-[#1f2937] text-white' : 'bg-[#f9fafb] text-black'}`}
+      >
+        <div className="container mx-auto px-4">
+          <TypewriterText
+            text={t.ourAdvantages}
+            className={`block text-5xl md:text-6xl font-bold text-center mb-6 ${darkMode ? 'text-white' : 'text-black'}`}
+          />
+          <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {advantagesExtra.map((item, idx) => (
+              <div
+                key={idx}
+                className={`flex items-start gap-4 rounded-2xl p-6 hover:-translate-y-1 transition-transform border shadow-lg interactive-shadow ${
+                  darkMode
+                    ? 'bg-[#1f2937]/80 border-[#0f172a] text-white'
+                    : 'bg-[#f9fafb]/70 border-[#9ca3af] text-black'
+                }`}
+                onMouseMove={handleShadowMove}
+                onMouseLeave={handleShadowLeave}
+              >
+                <div
+                  className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${
+                    darkMode ? 'bg-white/15 text-white' : 'bg-white/70 text-black'
+                  }`}
+                >
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-base md:text-lg opacity-90 leading-relaxed">{item.description}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
       {/* Team Section - Horizontal Scrolling */}
-      <section id="team" className={`py-24 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
-        <div className="container mx-auto px-4">
+      <section
+        id="team"
+        className="py-24 relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/team.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div
+          className={`absolute inset-0 ${darkMode ? 'bg-slate-900/60' : 'bg-white/60'} backdrop-blur-md`}
+        ></div>
+        <div className="container mx-auto px-4 relative z-10">
           <TypewriterText
             text={t.teamWork}
             className="block text-5xl md:text-6xl font-bold text-center mb-6"
@@ -682,11 +690,11 @@ const FlyHighWebsite = () => {
               {team.map((member, index) => (
                 <div 
                   key={index} 
-                  className={`flex-none w-80 p-8 rounded-3xl ${darkMode ? 'bg-gray-900' : 'bg-white/95'} shadow-md text-center transition-all transform hover:-translate-y-2 interactive-shadow border ${darkMode ? 'border-gray-700' : 'border-gray-200'} snap-center`}
+                  className={`flex-none w-80 p-8 rounded-3xl ${darkMode ? 'bg-gray-900' : 'bg-white/95'} shadow-md text-center transition-all transform hover:-translate-y-2 interactive-shadow border ${darkMode ? 'border-gray-700' : 'border-4 border-blue-500'} snap-center`}
                   onMouseMove={handleShadowMove}
                   onMouseLeave={handleShadowLeave}
                 >
-                  <div className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-6 border-4 border-blue-500 shadow-lg">
+                  <div className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-6 border-2 border-blue-500 shadow-lg">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="text-2xl font-bold mb-3">{member.name}</h3>
@@ -701,9 +709,8 @@ const FlyHighWebsite = () => {
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
-      <section id="contact" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+      <section id="contact" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-[#d3d3d4]/80'}`}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <TypewriterText
@@ -755,7 +762,7 @@ const FlyHighWebsite = () => {
               <p className="text-gray-400 text-lg">{t.footer}</p>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-4">
-              <a
+              {/* <a
                 href="https://www.linkedin.com/in/minaromany/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -767,7 +774,7 @@ const FlyHighWebsite = () => {
                 <span className="text-sm">
                   Created By <span className="font-semibold underline">Mina Romany</span>
                 </span>
-              </a>
+              </a> */}
               <div className="flex space-x-6">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-all transform hover:scale-110">
                   <Facebook className="w-5 h-5" />
