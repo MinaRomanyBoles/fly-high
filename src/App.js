@@ -621,21 +621,38 @@ const FlyHighWebsite = () => {
         </section>
 
         {/* Our Advantages (additional) */}
-        <section id="our-advantages" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <section
+          id="our-advantages"
+          className={`py-24 ${darkMode ? 'bg-[#1f2937] text-white' : 'bg-[#f9fafb] text-[#368ce8]'}`}
+        >
           <div className="container mx-auto px-4">
             <TypewriterText
               text={t.ourAdvantages}
               className="block text-5xl md:text-6xl font-bold text-center mb-6"
             />
             <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
-            <div className={`rounded-3xl ${darkMode ? 'bg-blue-900/90 text-white' : 'bg-blue-900 text-white'} shadow-2xl p-8 md:p-12`}>
+            <div
+              className={`rounded-3xl shadow-2xl p-8 md:p-12 border ${
+                darkMode
+                  ? 'bg-[#111927] text-white border-[#0f172a]'
+                  : 'bg-[#adadae] text-[#368ce8] border-[#9ca3af]'
+              }`}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {advantagesExtra.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-4 rounded-2xl bg-white/10 p-6 hover:-translate-y-1 transition-transform"
+                    className={`flex items-start gap-4 rounded-2xl p-6 hover:-translate-y-1 transition-transform border ${
+                      darkMode
+                        ? 'bg-[#111927]/80 border-[#0f172a] text-white'
+                        : 'bg-[#f9fafb]/70 border-[#9ca3af] text-[#368ce8]'
+                    }`}
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white">
+                    <div
+                      className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${
+                        darkMode ? 'bg-white/15 text-white' : 'bg-white/70 text-[#368ce8]'
+                      }`}
+                    >
                       {item.icon}
                     </div>
                     <div>
