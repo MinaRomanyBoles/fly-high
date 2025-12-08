@@ -32,10 +32,10 @@ html {
 }
 
 .interactive-shadow {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.2s ease;
 }
 
 .interactive-shadow:hover {
-  box-shadow: var(--shadow-x, 0px) var(--shadow-y, 0px) var(--shadow-blur, 28px) var(--shadow-color, rgba(248, 113, 113, 0.45));
+  box-shadow: var(--shadow-x, 0px) var(--shadow-y, 6px) var(--shadow-blur, 18px) var(--shadow-color, rgba(248, 113, 113, 0.35));
 }

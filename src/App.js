@@ -1,5 +1,58 @@
 ﻿import React, { useState, useEffect, useRef } from 'react';
-import { Moon, Sun, Globe, Menu, X, ChevronRight, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, Target, Eye, Zap, Shield, Award, TrendingUp, Code, Palette, BarChart, Send, MessageCircle, User } from 'lucide-react';
+import { Moon, Sun, Globe, Menu, X, ChevronRight, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, Target, Eye, Zap, Shield, Award, TrendingUp, Code, Palette, BarChart, Send, MessageCircle, User, Users, Lightbulb, Cog } from 'lucide-react';
+
+
+const TypewriterText = ({ text, className = '', startDelay = 80, speed = 30 }) => {
+  const [displayed, setDisplayed] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    setDisplayed('');
+    let idx = 0;
+    let intervalId;
+    const timeoutId = setTimeout(() => {
+      intervalId = setInterval(() => {
+        idx += 1;
+        setDisplayed(text.slice(0, idx));
+        if (idx >= text.length) {
+          clearInterval(intervalId);
+        }
+      }, speed);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [hasStarted, text, speed, startDelay]);
+
+  useEffect(() => {
+    setDisplayed('');
+  }, [text]);
+
+  return (
+    <span ref={ref} className={className}>
+      {displayed}
+    </span>
+  );
+};
 
 const FlyHighWebsite = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -22,18 +75,18 @@ const FlyHighWebsite = () => {
     const distance = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
     const angle = Math.atan2(offsetY, offsetX); // -PI to PI
     const hue = ((angle + Math.PI) / (2 * Math.PI)) * 120; // map to 0-120 (red to green through yellow)
-    const intensity = Math.min(0.55, 0.25 + distance / 600);
+    const intensity = Math.min(0.4, 0.2 + distance / 700);
     e.currentTarget.style.setProperty('--shadow-x', `${offsetX / 12}px`);
     e.currentTarget.style.setProperty('--shadow-y', `${offsetY / 12}px`);
-    e.currentTarget.style.setProperty('--shadow-blur', `${24 + distance / 6}px`);
+    e.currentTarget.style.setProperty('--shadow-blur', `${16 + distance / 10}px`);
     e.currentTarget.style.setProperty('--shadow-color', `hsla(${hue}, 90%, 60%, ${intensity})`);
   };
 
   const handleShadowLeave = (e) => {
-    e.currentTarget.style.removeProperty('--shadow-x');
-    e.currentTarget.style.removeProperty('--shadow-y');
-    e.currentTarget.style.removeProperty('--shadow-blur');
-    e.currentTarget.style.removeProperty('--shadow-color');
+    e.currentTarget.style.setProperty('--shadow-x', '0px');
+    e.currentTarget.style.setProperty('--shadow-y', '6px');
+    e.currentTarget.style.setProperty('--shadow-blur', '14px');
+    e.currentTarget.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.2)');
   };
 
   const translations = {
@@ -44,16 +97,16 @@ const FlyHighWebsite = () => {
       teamNav: 'Our Team',
       contact: 'Contact Us',
       heroTitle: 'FLY HIGH',
-      heroSubtitle: 'Digital Innovation Agency',
-      heroDescription: 'We help businesses soar to new heights with cutting-edge digital solutions',
+      heroSubtitle: 'We connect stories to the sky – and to your audience',
+      heroDescription: 'From Sky to Screen',
       learnMore: 'Learn More',
       getStarted: 'Get Started',
       aboutTitle: 'About FlyHigh',
-      aboutText: 'We are a leading digital agency specializing in innovative solutions that help businesses soar to new heights. Our team of experts delivers exceptional results through creativity, technology, and strategic thinking.',
+      aboutText: 'FlyHighBrothersLLC is a creativemedia production company thatcombines aerial excellence with cinematic storytelling. Founded by a professional pilot and a seasoned production team, we specialize in delivering visual content that inspires, engages, and elevates.',
       ourMission: 'Our Mission',
-      missionText: 'To empower businesses with innovative digital solutions that drive growth and success in the modern digital landscape.',
+      missionText: 'Tobecome the region’s most innovative media partner, redefining aerial and cinematic storytelling through creativity, technology, and precision.',
       ourVision: 'Our Vision',
-      visionText: 'To be the most trusted digital partner for businesses worldwide, setting new standards in digital excellence and innovation.',
+      visionText: 'Todeliver high-quality, visually captivating media solutions — from the ground to the sky — with a commitment to creativity, reliability, and client success.',
       advantages: 'Why Choose Us',
       services: 'Our Services',
       teamWork: 'FlyHigh Team',
@@ -69,17 +122,17 @@ const FlyHighWebsite = () => {
       about: "من نحن",
       services: "خدماتنا",
       contact: "اتصل بنا",
-      heroTitle: "FlyHigh",
-      heroSubtitle: "وكالة الابتكار الرقمي",
-      heroDescription: "نساعد الشركات على التحليق نحو آفاق جديدة بفضل حلول رقمية متطورة",
+      heroTitle: "FLY HIGH",
+      heroSubtitle: "نربط القصص بالسماء – وبجمهورك",
+      heroDescription: "من السماء إلى الشاشة",
       learnMore: "اعرف المزيد",
       getStarted: "ابدأ الآن",
       aboutTitle: "FlyHigh عن",
-      aboutText: "نحن وكالة رقمية رائدة متخصصة في الحلول المبتكرة التي تساعد الشركات على الارتقاء إلى آفاق جديدة. يقدم فريق خبرائنا نتائج استثنائية عبر الإبداع والتكنولوجيا والتفكير الاستراتيجي.",
+      aboutText: "شركة FlyHighBrothersLLC للإنتاج الإعلامي الإبداعي تجمع بين التميز الجوي والسرد السينمائي. تأسست على يد طيار محترف وفريق إنتاج مخضرم، ونختص بتقديم محتوى بصري يلهم الجمهور ويشركه ويرتقي به.",
       ourMission: "مهمتنا",
-      missionText: "تمكين الشركات بحلول رقمية مبتكرة تدفع النمو والنجاح في العصر الرقمي.",
+      missionText: "أن نصبح الشريك الإعلامي الأكثر ابتكاراً في المنطقة، ونعيد تعريف السرد الجوي والسينمائي عبر الإبداع والتكنولوجيا والدقة.",
       ourVision: "رؤيتنا",
-      visionText: "أن نكون الشريك الرقمي الأكثر ثقة للأعمال حول العالم، ونضع معايير جديدة للتميز والابتكار.",
+      visionText: "تقديم حلول إعلامية عالية الجودة وجذابة بصرياً - من الأرض إلى السماء - مع التزام بالإبداع والموثوقية ونجاح العملاء.",
       advantages: "لماذا تختارنا",
       services: "خدماتنا",
       teamWork: "FlyHigh فريق",
@@ -130,44 +183,44 @@ const FlyHighWebsite = () => {
 
   const services = [
     { 
+      icon: <Palette className="w-16 h-16" />, 
+      title: language === 'en' ? 'Creative Production' : 'الإنتاج الإبداعي', 
+      description: language === 'en' ? 'Film, podcast, drama, TV shows, music videos' : 'أفلام، بودكاست، دراما، برامج تلفزيونية، فيديوهات موسيقية' 
+    },
+    { 
+      icon: <Send className="w-16 h-16" />, 
+      title: language === 'en' ? 'Aerial Services' : 'الخدمات الجوية', 
+      description: language === 'en' ? 'Drone filming, helicopter drops, aerial shots' : 'تصوير درون، إسقاطات هليكوبتر، لقطات جوية' 
+    },
+    { 
+      icon: <TrendingUp className="w-16 h-16" />, 
+      title: language === 'en' ? 'Live Events' : 'الفعاليات الحية', 
+      description: language === 'en' ? 'Conferences, concerts, VIP parties, full coverage' : 'مؤتمرات، حفلات، حفلات VIP بتغطية كاملة' 
+    },
+    { 
+      icon: <BarChart className="w-16 h-16" />, 
+      title: language === 'en' ? 'Digital & Outdoor' : 'رقمي وخارجي', 
+      description: language === 'en' ? 'Social content, reels, billboard campaigns' : 'محتوى اجتماعي، ريلز، حملات لوحات إعلانية' 
+    },
+    { 
       icon: <Code className="w-16 h-16" />, 
       title: language === 'en' ? 'Web Development' : 'تطوير الويب', 
-      description: language === 'en' ? 'Custom websites and powerful web applications tailored to your needs' : 'مواقع مخصصة وتطبيقات ويب قوية مصممة خصيصاً لاحتياجاتك' 
+      description: language === 'en' ? 'Developing high-performance, responsive, and modern websites.' : 'تطوير مواقع عالية الأداء وسريعة الاستجابة وحديثة.' 
+    },
+    { 
+      icon: <Zap className="w-16 h-16" />, 
+      title: language === 'en' ? 'Mobile app Development' : 'تطوير تطبيقات الموبايل', 
+      description: language === 'en' ? 'Building fast, secure, and scalable mobile apps for iOS and Android.' : 'بناء تطبيقات سريعة وآمنة وقابلة للتوسع لـ iOS وAndroid.' 
     },
     { 
       icon: <Palette className="w-16 h-16" />, 
-      title: language === 'en' ? 'UI/UX Design' : 'تصميم واجهة وتجربة المستخدم', 
-      description: language === 'en' ? 'Beautiful, intuitive designs that create memorable user experiences' : 'تصاميم جميلة وبديهية تخلق تجارب مستخدم لا تُنسى' 
+      title: language === 'en' ? 'UI & UX Design' : 'تصميم واجهات وتجربة المستخدم', 
+      description: language === 'en' ? 'Creating intuitive, visually appealing, and user-centered digital experiences.' : 'تصميمات بديهية وجذابة تتمحور حول المستخدم.' 
     },
     { 
-      icon: <BarChart className="w-16 h-16" />, 
-      title: language === 'en' ? 'Digital Marketing' : 'التسويق الرقمي', 
-      description: language === 'en' ? 'Strategic marketing solutions that drive real business growth' : 'حلول تسويقية استراتيجية تحفز نمو الأعمال الحقيقي' 
-    },
-    { 
-      icon: <Send className="w-16 h-16" />, 
-      title: language === 'en' ? 'Helicopter Gift Drops' : 'إسقاط هدايا بالمروحيات', 
-      description: language === 'en' ? 'Aerial gifting activations with precise coordination' : 'تنفيذ حملات إسقاط هدايا جوية بتنسيق دقيق' 
-    },
-    { 
-      icon: <Send className="w-16 h-16" />, 
-      title: language === 'en' ? 'Drone Filming' : 'تصوير درون', 
-      description: language === 'en' ? 'High-impact aerial shots for any production' : 'لقطات جوية مؤثرة لأي إنتاج' 
-    },
-    { 
-      icon: <BarChart className="w-16 h-16" />, 
-      title: language === 'en' ? 'Aerial Ads & Campaigns' : 'إعلانات وحملات جوية', 
-      description: language === 'en' ? 'Sky-high brand awareness with aerial campaigns' : 'زيادة الوعي بالعلامة عبر حملات جوية مميزة' 
-    },
-    { 
-      icon: <Send className="w-16 h-16" />, 
-      title: language === 'en' ? 'Broadcast & Distribution' : 'بث وتوزيع', 
-      description: language === 'en' ? 'End-to-end broadcast and delivery for your content' : 'حلول بث وتوزيع متكاملة لمحتواك' 
-    },
-    { 
-      icon: <Palette className="w-16 h-16" />, 
-      title: language === 'en' ? 'Podcast Production (Audio + Video)' : 'إنتاج بودكاست (صوت وصورة)', 
-      description: language === 'en' ? 'Studio-grade podcast creation across formats' : 'إنتاج بودكاست بجودة استوديو لكل الصيغ' 
+      icon: <Eye className="w-16 h-16" />, 
+      title: language === 'en' ? 'Brand identity' : 'الهوية البصرية', 
+      description: language === 'en' ? 'Create logos, logo systems, full visual guidelines.' : 'تصميم الشعارات والأنظمة البصرية وإرشادات الهوية الكاملة.' 
     },
     { 
       icon: <Palette className="w-16 h-16" />, 
@@ -267,18 +320,28 @@ const FlyHighWebsite = () => {
   ];
   const advantagesExtra = [
     {
+      icon: <Users className="w-10 h-10" />,
+      title: language === 'en' ? 'Professional & Experienced' : 'محترفون وذوو خبرة',
+      description: language === 'en'
+        ? 'Led by a creative team with solid industry expertise across media and production'
+        : 'يقودها فريق إبداعي بخبرة راسخة في الإعلام والإنتاج',
+    },
+    {
+      icon: <Lightbulb className="w-10 h-10" />,
       title: language === 'en' ? 'Innovation & Technology' : 'الابتكار والتقنية',
       description: language === 'en'
         ? 'Advanced drone filming, dynamic editing, and modern media tools'
         : 'تصوير درون متقدم، مونتاج ديناميكي، وأدوات إعلامية حديثة',
     },
     {
+      icon: <Cog className="w-10 h-10" />,
       title: language === 'en' ? 'Client-Centered Approach' : 'نهج يركز على العميل',
       description: language === 'en'
         ? "We listen, adapt, and tailor each project to the client's needs"
         : 'نستمع ونطور ونخصص كل مشروع وفق احتياجات العميل',
     },
     {
+      icon: <Target className="w-10 h-10" />,
       title: language === 'en' ? 'Results You Can Measure' : 'نتائج يمكن قياسها',
       description: language === 'en'
         ? 'Our work is built to deliver the engagement, reach, and real-world impact'
@@ -308,6 +371,12 @@ const FlyHighWebsite = () => {
       image: '/Ahmed%20Abo%20El%20Magd.png'
     },
     { 
+      name: language === 'en' ? 'Jana Abo El Magd' : 'جنا أبو المجد', 
+      role: language === 'en' ? 'Official Spokesperson' : 'المتحدثة الرسمية',
+      email: 'jana@flyhigh.com.eg',
+      image: '/jana.png'
+    },
+    { 
       name: language === 'en' ? 'Mohamed Tawfik' : 'محمد توفيق', 
       role: language === 'en' ? 'Senior Producer' : 'منتج أول',
       email: 'mtawfik@flyhigh.com.eg',
@@ -327,9 +396,8 @@ const FlyHighWebsite = () => {
       <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? (darkMode ? 'bg-gray-900 shadow-md' : 'bg-white shadow-md') : 'bg-transparent'}`}>
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="text-3xl font-bold tracking-tight">
-              <span className={darkMode ? 'text-white' : 'text-gray-900'}>FLY</span>
-              <span className="text-blue-500">HIGH</span>
+            <div className="flex items-center">
+              <img src="/logo.svg" alt="Fly High logo" className="h-10 w-auto" />
             </div>
 
             {/* Desktop Navigation */}
@@ -397,11 +465,16 @@ const FlyHighWebsite = () => {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
         
         <div className="container mx-auto px-4 text-center relative z-10 text-white">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-            {t.heroTitle}
-          </h1>
+          <div className="flex justify-center mb-8">
+            <img src="/logo.svg" alt="Fly High logo" className="h-20 md:h-28 w-auto drop-shadow-lg" />
+          </div>
           <h2 className="text-2xl md:text-3xl font-light mb-8 opacity-90">
-            {t.heroSubtitle}
+            <TypewriterText
+              text={t.heroSubtitle}
+              speed={60}
+              startDelay={150}
+              className="inline-block"
+            />
           </h2>
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light">
             {t.heroDescription}
@@ -417,12 +490,23 @@ const FlyHighWebsite = () => {
         </div>
       </section>
 
-      {/* About Section - Paper Card Style */}
-      <section id="about" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">
-            {t.aboutTitle}
-          </h2>
+      {/* About Section - Paper Card Style with Background */}
+      <section
+        id="about"
+        className="py-24 relative overflow-hidden min-h-screen flex items-center"
+        style={{
+          backgroundImage: "url('/about.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className={`absolute inset-0 ${darkMode ? 'bg-gray-900/60 backdrop-blur-md' : 'bg-white/60 backdrop-blur-md'}`} />
+        <div className="container mx-auto px-4 relative z-10">
+          <TypewriterText
+            text={t.aboutTitle}
+            className="block text-5xl md:text-6xl font-bold text-center mb-6"
+          />
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
           <div className="max-w-4xl mx-auto text-center text-xl leading-relaxed mb-20 opacity-80">
             {t.aboutText}
@@ -430,7 +514,7 @@ const FlyHighWebsite = () => {
           
           <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             <div
-              className={`p-10 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-100'} interactive-shadow transition-all transform hover:-translate-y-2`}
+              className={`p-10 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white/95'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-200'} interactive-shadow transition-all transform hover:-translate-y-2`}
               onMouseMove={handleShadowMove}
               onMouseLeave={handleShadowLeave}
             >
@@ -439,7 +523,7 @@ const FlyHighWebsite = () => {
               <p className="text-lg leading-relaxed opacity-80">{t.missionText}</p>
             </div>
             <div
-              className={`p-10 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-100'} interactive-shadow transition-all transform hover:-translate-y-2`}
+              className={`p-10 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white/95'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-200'} interactive-shadow transition-all transform hover:-translate-y-2`}
               onMouseMove={handleShadowMove}
               onMouseLeave={handleShadowLeave}
             >
@@ -454,9 +538,11 @@ const FlyHighWebsite = () => {
       {/* Advantages Section */}
       <section id="advantages" className={`py-24 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">{t.advantages}</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto mb-20"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <TypewriterText
+            text={t.advantages}
+            className="block text-5xl md:text-6xl font-bold text-center mb-6"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-4 overflow-visible">
             {advantages.map((advantage, index) => (
               <div
                 key={index}
@@ -474,12 +560,25 @@ const FlyHighWebsite = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
-        <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">{t.services}</h2>
+      <section
+        id="services"
+        className="py-24 relative overflow-visible"
+        style={{
+          backgroundImage: "url('/ourservices.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className={`absolute inset-0 ${darkMode ? 'bg-gray-900/60 backdrop-blur-md' : 'bg-white/70 backdrop-blur-md'}`} />
+        <div className="container mx-auto px-4 relative z-10">
+          <TypewriterText
+            text={t.services}
+            className="block text-5xl md:text-6xl font-bold text-center mb-6"
+          />
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-20"></div>
-          <div className="relative">
-              <div className="flex justify-between mb-4">
+          <div className="relative overflow-visible">
+              <div className="flex justify-between mb-4 ">
                 <button
                   onClick={() => scrollServices('prev')}
                   className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 transition text-sm font-semibold"
@@ -495,7 +594,7 @@ const FlyHighWebsite = () => {
               </div>
               <div
                 ref={servicesContainerRef}
-                className="flex overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-hide pb-4"
+                className="flex overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-hide pb-4 p-5"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {servicePages.map((page, pageIndex) => (
@@ -504,7 +603,7 @@ const FlyHighWebsite = () => {
                       {page.map((service, index) => (
                         <div
                           key={index}
-                          className={`p-12 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-100'} interactive-shadow transition-all transform hover:-translate-y-3 text-center`}
+                          className={`p-12 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white/95'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-200'} interactive-shadow transition-all transform hover:-translate-y-3 text-center`}
                           onMouseMove={handleShadowMove}
                           onMouseLeave={handleShadowLeave}
                         >
@@ -522,22 +621,30 @@ const FlyHighWebsite = () => {
         </section>
 
         {/* Our Advantages (additional) */}
-        <section id="our-advantages" className={`py-24 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <section id="our-advantages" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">{t.ourAdvantages}</h2>
+            <TypewriterText
+              text={t.ourAdvantages}
+              className="block text-5xl md:text-6xl font-bold text-center mb-6"
+            />
             <div className="w-20 h-1 bg-blue-500 mx-auto mb-12"></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {advantagesExtra.map((item, idx) => (
-                <div
-                  key={idx}
-                  className={`p-10 rounded-3xl ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-md border ${darkMode ? 'border-gray-700' : 'border-gray-100'} interactive-shadow transition-all transform hover:-translate-y-2`}
-                  onMouseMove={handleShadowMove}
-                  onMouseLeave={handleShadowLeave}
-                >
-                  <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                  <p className="text-lg leading-relaxed opacity-80">{item.description}</p>
-                </div>
-              ))}
+            <div className={`rounded-3xl ${darkMode ? 'bg-blue-900/90 text-white' : 'bg-blue-900 text-white'} shadow-2xl p-8 md:p-12`}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {advantagesExtra.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-4 rounded-2xl bg-white/10 p-6 hover:-translate-y-1 transition-transform"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-base md:text-lg opacity-90 leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -545,17 +652,20 @@ const FlyHighWebsite = () => {
       {/* Team Section - Horizontal Scrolling */}
       <section id="team" className={`py-24 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">{t.teamWork}</h2>
+          <TypewriterText
+            text={t.teamWork}
+            className="block text-5xl md:text-6xl font-bold text-center mb-6"
+          />
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
           <p className="text-center text-xl mb-12 max-w-2xl mx-auto opacity-70">{t.teamText}</p>
           
           {/* Horizontal Scrolling Container */}
-          <div className="relative p-6">
-            <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+            <div className="relative p-6 overflow-visible">
+              <div className="flex overflow-x-auto overflow-y-visible gap-6 pb-8 snap-x snap-mandatory scrollbar-hide justify-center p-12" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
               {team.map((member, index) => (
                 <div 
                   key={index} 
-                  className={`flex-none w-80 p-8 rounded-3xl ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-md text-center transition-all transform hover:-translate-y-2 interactive-shadow border ${darkMode ? 'border-gray-700' : 'border-gray-100'} snap-center`}
+                  className={`flex-none w-80 p-8 rounded-3xl ${darkMode ? 'bg-gray-900' : 'bg-white/95'} shadow-md text-center transition-all transform hover:-translate-y-2 interactive-shadow border ${darkMode ? 'border-gray-700' : 'border-gray-200'} snap-center`}
                   onMouseMove={handleShadowMove}
                   onMouseLeave={handleShadowLeave}
                 >
@@ -579,7 +689,10 @@ const FlyHighWebsite = () => {
       <section id="contact" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-6">{t.contactTitle}</h2>
+            <TypewriterText
+              text={t.contactTitle}
+              className="block text-5xl md:text-6xl font-bold text-center mb-6"
+            />
             <div className="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
             <p className="text-2xl text-center mb-16 opacity-80">{t.contactText}</p>
             
