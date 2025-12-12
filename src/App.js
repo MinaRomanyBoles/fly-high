@@ -383,10 +383,10 @@ const FlyHighWebsite = () => {
       image: '/Mohamed%20Tawfik.png'
     },
     { 
-      name: language === 'en' ? 'Mostafa Kamal' : 'مصطفى كمال', 
+      name: language === 'en' ? 'Abdel-Masih Henry' : 'عبد المسيح هنري', 
       role: language === 'en' ? 'Digital Marketing Manager' : 'مدير التسويق الرقمي',
-      email: 'mkamal@flyhigh.com.eg',
-      image: '/Mostafa%20Kamal.png'
+      email: 'henry@flyhigh.com.eg',
+      image: '/henry.png'
     },
   ];
 
