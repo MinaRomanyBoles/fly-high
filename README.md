@@ -1,70 +1,192 @@
-# Getting Started with Create React App
+# ✈️ FlyHigh Brothers LLC - Official Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+![FlyHigh Logo](public/logo192.png)
 
-In the project directory, you can run:
+**We connect stories to the sky – and to your audience**
 
-### `npm start`
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge)](LICENSE)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Live Demo](#) • [Features](#-features) • [Installation](#-installation) • [Tech Stack](#-tech-stack) • [Contact](#-contact)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</div>
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📖 About
 
-### `npm run build`
+FlyHigh Brothers LLC is a creative media production company that combines aerial excellence with cinematic storytelling. Founded by a professional pilot and a seasoned production team, we specialize in delivering visual content that inspires, engages, and elevates.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This repository contains the official website built with **React** and **TailwindCSS**, featuring a modern, responsive design with bilingual support (English/Arabic), dark mode, and stunning animations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ✨ Features
 
-### `npm run eject`
+| Feature | Description |
+|---------|-------------|
+| 🌓 **Dark/Light Mode** | Seamless theme switching with persistent user preference |
+| 🌍 **Bilingual Support** | Full English and Arabic translations with RTL support |
+| 🎬 **Video Hero Section** | Cinematic video background with overlay effects |
+| ⌨️ **Typewriter Effects** | Engaging animated text reveals on scroll |
+| 🖱️ **Interactive Shadows** | Dynamic shadow effects following mouse movement |
+| 📱 **Fully Responsive** | Mobile-first design optimized for all devices |
+| 🎨 **Modern Design** | Glassmorphism, gradients, and smooth transitions |
+| 📊 **Services Carousel** | Paginated horizontal scroll for 27+ services |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Frontend Framework:** React 18.2
+- **Styling:** TailwindCSS 3.3
+- **Icons:** Lucide React
+- **Build Tool:** Create React App
+- **CSS Processing:** PostCSS + Autoprefixer
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📦 Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Node.js (v16 or higher)
+- npm or yarn
 
-### Code Splitting
+### Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/MinaRomanyBoles/fly-high.git
+   cd flyhigh-website
+   ```
 
-### Analyzing the Bundle Size
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-### Making a Progressive Web App
+4. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Production Build
 
-### Advanced Configuration
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The optimized build will be generated in the `build` folder.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📁 Project Structure
 
-### `npm run build` fails to minify
+```
+flyhigh-website/
+├── public/
+│   ├── index.html           # HTML template
+│   ├── logo.svg             # FlyHigh logo
+│   ├── bg.mp4               # Hero section video
+│   ├── about.png            # About section background
+│   ├── ourservices.jpg      # Services section background
+│   ├── team.jpg             # Team section background
+│   └── [team-photos]        # Team member images
+├── src/
+│   ├── App.js               # Main application component
+│   ├── App.css              # Component-specific styles
+│   ├── index.js             # React entry point
+│   └── index.css            # Global styles & Tailwind imports
+├── tailwind.config.js       # Tailwind configuration
+├── postcss.config.js        # PostCSS configuration
+└── package.json             # Project dependencies
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🎨 Sections Overview
+
+| Section | Description |
+|---------|-------------|
+| **Hero** | Full-screen video background with animated tagline and CTAs |
+| **About** | Company overview with Mission & Vision cards |
+| **Advantages** | Key benefits with interactive shadow cards |
+| **Services** | 27+ services displayed in a paginated carousel |
+| **Our Advantages** | Additional competitive advantages |
+| **Team** | Meet the team with featured founder and scrollable members |
+| **Contact** | Contact information with email, phone, and location |
+| **Footer** | Social media links and copyright information |
+
+---
+
+## 🚀 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Runs the app in development mode |
+| `npm run build` | Builds the app for production |
+| `npm test` | Launches the test runner |
+| `npm run eject` | Ejects from Create React App (irreversible) |
+
+---
+
+## 🌐 Services Offered
+
+- 🎬 **Creative Production** - Films, podcasts, drama, TV shows, music videos
+- 🚁 **Aerial Services** - Drone filming, helicopter drops, aerial shots
+- 📡 **Live Events** - Conferences, concerts, VIP parties
+- 📱 **Digital & Outdoor** - Social content, reels, billboard campaigns
+- 💻 **Web Development** - High-performance, responsive websites
+- 📲 **Mobile App Development** - iOS and Android applications
+- 🎨 **UI/UX Design** - User-centered digital experiences
+- 🏷️ **Brand Identity** - Logos, visual guidelines, brand systems
+- *...and many more!*
+
+---
+
+## 👥 Team
+
+| Name | Role | Contact |
+|------|------|---------|
+| **Ahmed Abo El Magd** | Founder & General Manager | aboelmagd@flyhigh.com.eg |
+| **Jana Abo El Magd** | Official Spokesperson | jana@flyhigh.com.eg |
+| **Mohamed Tawfik** | Senior Producer | mtawfik@flyhigh.com.eg |
+| **Abdel-Masih Henry** | Digital Marketing Manager | henry@flyhigh.com.eg |
+
+---
+
+## 📞 Contact
+
+<div align="center">
+
+| 📧 Email | 📱 Phone | 📍 Location |
+|----------|----------|-------------|
+| info@flyhigh.com.eg | +201550435615 | Cairo, Egypt |
+
+</div>
+
+---
+
+## 📄 License
+
+This project is proprietary and confidential. All rights reserved by **FlyHigh Brothers LLC**.
+
+© 2025 FlyHigh Brothers LLC. All rights reserved.
+
+---
+
+<div align="center">
+
+**From Sky to Screen** 🌤️
+
+Made with ❤️ by the FlyHigh Team
+
+</div>
