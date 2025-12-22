@@ -375,12 +375,12 @@ const FlyHighWebsite = () => {
       email: 'jana@flyhigh.com.eg',
       image: '/jana.png'
     },
-    {
-      name: language === 'en' ? 'Mohamed Tawfik' : 'محمد توفيق',
-      role: language === 'en' ? 'Senior Producer' : 'منتج أول',
-      email: 'mtawfik@flyhigh.com.eg',
-      image: '/Mohamed%20Tawfik.png'
-    },
+    // {
+    //   name: language === 'en' ? 'Mohamed Tawfik' : 'محمد توفيق',
+    //   role: language === 'en' ? 'Senior Producer' : 'منتج أول',
+    //   email: 'mtawfik@flyhigh.com.eg',
+    //   image: '/Mohamed%20Tawfik.png'
+    // },
     {
       name: language === 'en' ? 'Abdel-Masih Henry' : 'عبد المسيح هنري',
       role: language === 'en' ? 'Digital Marketing Manager' : 'مدير التسويق الرقمي',
