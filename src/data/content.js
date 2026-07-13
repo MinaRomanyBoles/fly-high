@@ -276,8 +276,8 @@ export const content = {
       description:
         "Our aerial advertising division operates Egypt's only dedicated commercial helicopter fleet for brand campaigns. Each activation is executed with military-grade precision and cinematic production values.",
       stats: [
-        { label: 'FLEET', value: 'MI-8' },
-        { label: 'ALTITUDE', value: '150–500m' },
+        { label: 'FLEET', value: 'Helicopter' },
+        { label: 'ALTITUDE', value: '50–100m' },
         { label: 'COVERAGE', value: 'All Egypt' },
         { label: 'REACH', value: '100K+', highlight: true },
       ],
@@ -678,8 +678,8 @@ export const content = {
       titleAccent: 'لوحة إعلانية',
       description: 'قسم الإعلان الجوي يشغّل أسطول الهليكوبتر التجاري الوحيد المخصص للحملات في مصر.',
       stats: [
-        { label: 'الأسطول', value: 'MI-8' },
-        { label: 'الارتفاع', value: '150–500م' },
+        { label: 'الأسطول', value: 'هليكوبتر' },
+        { label: 'الارتفاع', value: '50–100م' },
         { label: 'التغطية', value: 'كل مصر' },
         { label: 'الوصول', value: '100K+', highlight: true },
       ],

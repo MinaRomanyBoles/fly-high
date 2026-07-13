@@ -1,8 +1,73 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { ScrollReveal } from '../../../hooks/useScrollReveal';
 
 const DRONE_TECH_LOGO = '/images/White.png';
+
+const DroneTechLogo = ({ badge, url }) => {
+  const stageRef = useRef(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+
+  const handleMove = (e) => {
+    const el = stageRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({
+      x: Math.max(-1, Math.min(1, py)) * -10,
+      y: Math.max(-1, Math.min(1, px)) * 14,
+    });
+  };
+
+  const handleLeave = () => {
+    setTilt({ x: 0, y: 0 });
+    setHovered(false);
+  };
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="drone-logo-link group block w-full max-w-[540px] mx-auto outline-none"
+      aria-label="Drone Tech"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={handleLeave}
+      onMouseMove={handleMove}
+      onFocus={() => setHovered(true)}
+      onBlur={handleLeave}
+    >
+      <div
+        ref={stageRef}
+        className="drone-logo-stage relative aspect-[4/3] w-full flex flex-col items-center justify-center"
+      >
+        <div
+          className="drone-logo-float relative z-10 will-change-transform"
+          style={{
+            transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${hovered ? 1.06 : 1})`,
+            transition: hovered
+              ? 'transform 0.12s ease-out'
+              : 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+          }}
+        >
+          <img
+            src={DRONE_TECH_LOGO}
+            alt="Drone Tech"
+            className="w-full max-w-[450px] sm:max-w-[510px] h-auto object-contain drop-shadow-[0_0_28px_rgba(0,200,255,0.35)] group-hover:drop-shadow-[0_0_40px_rgba(0,200,255,0.55)] transition-[filter] duration-300"
+            loading="lazy"
+            draggable={false}
+          />
+        </div>
+
+        <p className="relative z-10 mt-6 text-white/45 text-xs font-bold uppercase tracking-[0.25em] group-hover:text-brand-cyan transition-colors duration-300">
+          {badge}
+        </p>
+      </div>
+    </a>
+  );
+};
 
 const DroneTechPartnerSection = ({ t }) => {
   const d = t.story.droneTech;
@@ -44,17 +109,7 @@ const DroneTechPartnerSection = ({ t }) => {
           </ScrollReveal>
 
           <ScrollReveal delay={120}>
-            <div className="flex flex-col items-center justify-center py-8 sm:py-12">
-              <img
-                src={DRONE_TECH_LOGO}
-                alt="Drone Tech"
-                className="w-full max-w-[320px] sm:max-w-[380px] h-auto object-contain"
-                loading="lazy"
-              />
-              <p className="mt-6 text-white/40 text-xs font-bold uppercase tracking-[0.25em]">
-                {d.badge}
-              </p>
-            </div>
+            <DroneTechLogo badge={d.badge} url={d.url} />
           </ScrollReveal>
         </div>
       </div>
