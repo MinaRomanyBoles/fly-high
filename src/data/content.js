@@ -427,7 +427,7 @@ export const content = {
         ],
         cta: 'Visit Drone Tech',
         url: 'https://dronetech.eg/',
-        badge: 'Strategic Aerial Partner',
+        badge: 'Key Aviation & Drone Technology Partner',
       },
       partner: {
         eyebrow: 'OUR PARTNERS',
@@ -802,7 +802,7 @@ export const content = {
         ],
         cta: 'زيارة Drone Tech',
         url: 'https://dronetech.eg/',
-        badge: 'شريك جوي استراتيجي',
+        badge: 'شريك جوي استراتيجالشريك الرئيسي في قطاع الطيران وتكنولوجيا الدرون',
       },
       partner: {
         eyebrow: 'شركاؤنا',
