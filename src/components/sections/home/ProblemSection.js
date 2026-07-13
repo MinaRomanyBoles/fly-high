@@ -7,8 +7,8 @@ const icons = [EyeOff, LayoutGrid, VolumeX];
 const ProblemSection = ({ t }) => (
   <section className="py-24 bg-brand-dark">
     <div className="container mx-auto px-4 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-16 items-start">
-        <ScrollReveal>
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <ScrollReveal className="flex flex-col justify-center">
           <div className="section-accent-line mb-6" />
           <p className="text-brand-cyan text-xs font-bold uppercase tracking-[0.2em] mb-4">
             {t.problem.eyebrow}

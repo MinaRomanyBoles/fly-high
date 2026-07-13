@@ -1,6 +1,9 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 import { ScrollReveal } from '../hooks/useScrollReveal';
+
+const FACEBOOK_URL = 'https://www.facebook.com/flyhighbrothersllc';
+const INSTAGRAM_URL = 'https://instagram.com/flyhighbrothers_';
 
 const ContactPage = ({ t }) => {
   const c = t.contact;
@@ -14,14 +17,14 @@ const ContactPage = ({ t }) => {
           <p className="text-white/60 text-lg max-w-xl mx-auto">{c.subtitle}</p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <ScrollReveal>
-            <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto md:items-stretch">
+          <ScrollReveal className="h-full">
+            <div className="flex flex-col justify-between gap-4 h-full min-h-full">
               <a
                 href={`mailto:${c.email}`}
-                className="flex items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg hover:border-brand-coral/30 transition interactive-shadow"
+                className="flex flex-1 items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg hover:border-brand-coral/30 transition interactive-shadow"
               >
-                <Mail className="w-8 h-8 text-brand-coral" />
+                <Mail className="w-8 h-8 text-brand-coral flex-shrink-0" />
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Email</p>
                   <p className="text-white font-semibold">{c.email}</p>
@@ -29,35 +32,52 @@ const ContactPage = ({ t }) => {
               </a>
               <a
                 href={`tel:${c.phone.replace(/\s/g, '')}`}
-                className="flex items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg hover:border-brand-coral/30 transition interactive-shadow"
+                className="flex flex-1 items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg hover:border-brand-coral/30 transition interactive-shadow"
               >
-                <Phone className="w-8 h-8 text-brand-coral" />
+                <Phone className="w-8 h-8 text-brand-coral flex-shrink-0" />
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Phone</p>
                   <p className="text-white font-semibold">{c.phone}</p>
                 </div>
               </a>
-              <div className="flex items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg">
-                <MapPin className="w-8 h-8 text-brand-coral" />
+              <div className="flex flex-1 items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg">
+                <MapPin className="w-8 h-8 text-brand-coral flex-shrink-0" />
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Location</p>
                   <p className="text-white font-semibold">Cairo, Egypt</p>
                   <p className="text-white/50 text-sm mt-1">{c.company}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg">
-                <Instagram className="w-8 h-8 text-brand-coral" />
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg hover:border-brand-coral/30 transition interactive-shadow"
+              >
+                <Instagram className="w-8 h-8 text-brand-coral flex-shrink-0" />
                 <div>
                   <p className="text-xs text-white/40 uppercase tracking-widest">Instagram</p>
                   <p className="text-white font-semibold">{c.instagram}</p>
                 </div>
-              </div>
+              </a>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 items-center gap-4 bg-brand-navy border border-white/5 p-6 rounded-lg hover:border-brand-coral/30 transition interactive-shadow"
+              >
+                <Facebook className="w-8 h-8 text-brand-coral flex-shrink-0" />
+                <div>
+                  <p className="text-xs text-white/40 uppercase tracking-widest">Facebook</p>
+                  <p className="text-white font-semibold">flyhighbrothersllc</p>
+                </div>
+              </a>
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={150}>
+          <ScrollReveal delay={150} className="h-full">
             <form
-              className="bg-brand-navy border border-white/5 p-5 sm:p-8 rounded-lg space-y-4"
+              className="bg-brand-navy border border-white/5 p-5 sm:p-8 rounded-lg space-y-4 h-full flex flex-col"
               onSubmit={(e) => e.preventDefault()}
             >
               <div>
@@ -76,17 +96,17 @@ const ContactPage = ({ t }) => {
                   placeholder="your@email.com"
                 />
               </div>
-              <div>
+              <div className="flex-1 flex flex-col">
                 <label className="text-xs text-white/40 uppercase tracking-widest block mb-2">Message</label>
                 <textarea
                   rows={5}
-                  className="w-full bg-brand-dark border border-white/10 rounded px-4 py-3 text-white focus:border-brand-coral outline-none transition resize-none"
+                  className="w-full flex-1 min-h-[120px] bg-brand-dark border border-white/10 rounded px-4 py-3 text-white focus:border-brand-coral outline-none transition resize-none"
                   placeholder="Tell us about your campaign..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-brand-coral text-white font-bold uppercase tracking-wider py-4 hover:bg-[#e63e40] transition"
+                className="w-full bg-brand-coral text-white font-bold uppercase tracking-wider py-4 hover:bg-[#e63e40] transition mt-auto"
               >
                 {t.cta.button}
               </button>

@@ -15,6 +15,7 @@ import { content } from './data/content';
 import { useLanguage } from './hooks/useLanguage';
 import { usePageTitle } from './hooks/usePageTitle';
 import FloatingContactFab from './components/layout/FloatingContactFab';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 const AppContent = () => {
   const { language, toggleLanguage } = useLanguage();
@@ -23,6 +24,7 @@ const AppContent = () => {
 
   return (
     <div className={`min-h-screen overflow-x-hidden bg-brand-dark text-white ${language === 'ar' ? 'rtl' : 'ltr'}`}>
+      <ScrollToTop />
       <Navbar t={t} language={language} toggleLanguage={toggleLanguage} />
       <main className="overflow-x-hidden">
         <Routes>

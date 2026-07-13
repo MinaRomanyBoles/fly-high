@@ -404,8 +404,30 @@ export const content = {
       ceo: {
         eyebrow: 'MEET OUR CEO',
         name: 'Captain Ahmed Abo El Magd',
+        paragraphs: [
+          'Captain Ahmed Abo El Magd is an aviation executive with more than 25 years of experience in aviation operations, aviation management, government relations, and business development.',
+          'Upon this background, Fly High Brothers delivers innovative aviation services, aerial media solutions, and high-impact marketing campaigns that combine operational excellence with creativity and international standards.',
+          'Fly High Brothers has pioneered unique aerial campaigns in Egypt, including helicopter advertising, aerial filming, parachute activation campaigns, and aviation-based marketing experiences that generated more than 100 million views across digital and media platforms.',
+        ],
+      },
+      droneTech: {
+        eyebrow: 'STRATEGIC PARTNERSHIP',
+        title: 'FLYING WITH',
+        titleAccent: 'DRONE TECH',
+        subtitle:
+          'FlyHigh Brothers partners with Drone Tech on major national and international projects — where precision aviation meets digital transformation at scale.',
         description:
-          'An aviation executive with more than 25 years of experience in aviation operations, aviation management, government relations, and business development. FlyHigh Brothers has pioneered unique aerial campaigns in Egypt, generating more than 100 million views across digital and media platforms.',
+          'Drone Tech is an Egyptian drone service provider delivering end-to-end aerial solutions. Beyond photography, they enable businesses and governments with Digital Twins powered by cutting-edge drone technology — accelerating digital transformation across AEC, smart cities, energy, mining, utilities, and agriculture.',
+        quote: "We don't just provide drone services. We are partners in the Digital Transformation journey.",
+        highlights: [
+          'Major national and international project collaborations',
+          'Digital Twins & actionable aerial intelligence',
+          'Plan–design–build–operate asset lifecycle support',
+          'Strategic partners in the emerging low-altitude economy',
+        ],
+        cta: 'Visit Drone Tech',
+        url: 'https://dronetech.eg/',
+        badge: 'Strategic Aerial Partner',
       },
       partner: {
         eyebrow: 'OUR PARTNERS',
@@ -757,7 +779,30 @@ export const content = {
       ceo: {
         eyebrow: 'تعرف على الرئيس التنفيذي',
         name: 'الكابتن أحمد أبو المجد',
-        description: 'تنفيذي طيران بأكثر من 25 عاماً من الخبرة. رائد حملات جوية فريدة في مصر ولّدت أكثر من 100 مليون مشاهدة.',
+        paragraphs: [
+          'الكابتن أحمد أبو المجد تنفيذي في مجال الطيران بخبرة تتجاوز خمسة وعشرين عاماً في عمليات الطيران، وإدارة الطيران، والعلاقات الحكومية، وتطوير الأعمال.',
+          'وانطلاقاً من هذه الخلفية، تقدّم Fly High Brothers خدمات طيران مبتكرة، وحلول إعلام جوي، وحملات تسويقية عالية الأثر تجمع بين التميّز التشغيلي والإبداع والمعايير الدولية.',
+          'وقد نفّذت Fly High Brothers حملات جوية رائدة في مصر، شملت الإعلان بالطائرات المروحية، والتصوير الجوي، وحملات التفعيل بالمظلات، والتجارب التسويقية المستندة إلى الطيران، والتي حققت أكثر من 100 مليون مشاهدة عبر المنصات الرقمية والإعلامية.',
+        ],
+      },
+      droneTech: {
+        eyebrow: 'شراكة استراتيجية',
+        title: 'نحلّق مع',
+        titleAccent: 'DRONE TECH',
+        subtitle:
+          'تتعاون FlyHigh Brothers مع Drone Tech في مشاريع وطنية ودولية كبرى — حيث يلتقي الطيران الدقيق بالتحوّل الرقمي على نطاق واسع.',
+        description:
+          'Drone Tech مزوّد مصري لخدمات الطائرات بدون طيار تقدّم حلولاً جوية متكاملة. إلى جانب التصوير، تمكّن الشركات والحكومات من بناء التوائم الرقمية بتقنية الطائرات المتقدمة — لتسريع التحوّل الرقمي في مجالات الهندسة والبناء، والمدن الذكية، والطاقة، والتعدين، والمرافق، والزراعة.',
+        quote: 'لا نقدّم خدمات طائرات بدون طيار فحسب. نحن شركاء في رحلة التحوّل الرقمي.',
+        highlights: [
+          'تعاون في مشاريع وطنية ودولية كبرى وحساسة',
+          'توائم رقمية وذكاء جوي قابل للتنفيذ',
+          'دعم دورة حياة الأصول: تخطيط–تصميم–بناء–تشغيل',
+          'شركاء استراتيجيون في اقتصاد الارتفاعات المنخفضة الناشئ',
+        ],
+        cta: 'زيارة Drone Tech',
+        url: 'https://dronetech.eg/',
+        badge: 'شريك جوي استراتيجي',
       },
       partner: {
         eyebrow: 'شركاؤنا',

@@ -51,17 +51,28 @@ const OurStoryPage = ({ t }) => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <ScrollReveal>
-              <ImagePlaceholder
-                promptKey="ceoPortrait"
-                imagePrompts={imagePrompts}
-                className="w-full h-96 rounded-lg"
-                imgClassName="rounded-lg"
-              />
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-br from-brand-coral/30 to-brand-cyan/30 rounded-lg blur-lg opacity-60" />
+                <ImagePlaceholder
+                  promptKey="ceoPortrait"
+                  imagePrompts={imagePrompts}
+                  className="relative w-full aspect-[4/5] max-h-[560px] rounded-lg"
+                  imgClassName="rounded-lg"
+                  objectFit="cover"
+                  objectPosition="center top"
+                />
+              </div>
             </ScrollReveal>
             <ScrollReveal delay={150}>
               <p className="text-brand-cyan text-xs font-bold uppercase tracking-widest mb-4">{s.ceo.eyebrow}</p>
               <h3 className="text-3xl font-black text-white mb-4">{s.ceo.name}</h3>
-              <p className="text-white/60 leading-relaxed">{s.ceo.description}</p>
+              <div className="space-y-4">
+                {s.ceo.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className="text-white/60 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </ScrollReveal>
           </div>
 

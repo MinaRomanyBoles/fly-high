@@ -27,7 +27,13 @@ const CeoSection = ({ t }) => {
             <p className="text-brand-cyan text-xs font-bold uppercase tracking-[0.2em] mb-4">{ceo.eyebrow}</p>
             <h2 className="text-3xl md:text-5xl font-black uppercase text-white mb-2">{ceo.name}</h2>
             <p className="text-brand-coral text-sm font-bold uppercase tracking-widest mb-6">CEO</p>
-            <p className="text-white/70 text-lg leading-relaxed">{ceo.description}</p>
+            <div className="space-y-4">
+              {ceo.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)} className="text-white/70 text-base sm:text-lg leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
       </div>

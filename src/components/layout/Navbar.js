@@ -40,9 +40,11 @@ const Navbar = ({ t, language, toggleLanguage }) => {
       <div className="container mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex-shrink-0 group">
-            <span className="text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-brand-coral transition-colors">
-              {t.brand}
-            </span>
+            <img
+              src="/FHLogo.png"
+              alt={t.brand}
+              className="h-8 sm:h-10 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden xl:flex items-center gap-4 2xl:gap-6">

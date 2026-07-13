@@ -56,7 +56,7 @@ const AboutPage = ({ t }) => {
               <ImagePlaceholder
                 promptKey="ceoPortrait"
                 imagePrompts={imagePrompts}
-                className="w-full aspect-[4/5] max-h-[520px] rounded-lg"
+                className="w-full aspect-[4/5] max-h-[560px] rounded-lg"
                 imgClassName="rounded-lg"
                 objectFit="cover"
                 objectPosition="center top"
@@ -65,7 +65,13 @@ const AboutPage = ({ t }) => {
             <ScrollReveal delay={120}>
               <p className="text-brand-cyan text-xs font-bold uppercase tracking-widest mb-4">{s.ceo.eyebrow}</p>
               <h3 className="text-3xl font-black text-white mb-4">{s.ceo.name}</h3>
-              <p className="text-white/60 leading-relaxed">{s.ceo.description}</p>
+              <div className="space-y-4">
+                {s.ceo.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className="text-white/60 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </ScrollReveal>
           </div>
 

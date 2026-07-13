@@ -12,6 +12,7 @@ import ImpactSection from '../components/sections/home/ImpactSection';
 import TestimonialsSection from '../components/sections/home/TestimonialsSection';
 import CampaignsPreviewSection from '../components/sections/home/CampaignsPreviewSection';
 import SparkPartnerSection from '../components/sections/home/SparkPartnerSection';
+import DroneTechPartnerSection from '../components/sections/home/DroneTechPartnerSection';
 import HowWeWorkSection from '../components/sections/home/HowWeWorkSection';
 import OpportunitySection from '../components/sections/home/OpportunitySection';
 import CtaSection from '../components/sections/home/CtaSection';
@@ -32,6 +33,7 @@ const HomePage = ({ t }) => (
     <ImpactSection t={t} />
     <TestimonialsSection t={t} />
     <CampaignsPreviewSection t={t} />
+    <DroneTechPartnerSection t={t} />
     <SparkPartnerSection t={t} />
     <HowWeWorkSection t={t} />
     <OpportunitySection t={t} />
