@@ -426,7 +426,7 @@ export const content = {
           'Strategic partners in the emerging low-altitude economy',
         ],
         cta: 'Visit Drone Tech',
-        url: 'https://dronetech.eg/',
+        url: '#',
         badge: 'Key Aviation & Drone Technology Partner',
       },
       partner: {
@@ -801,7 +801,7 @@ export const content = {
           'شركاء استراتيجيون في اقتصاد الارتفاعات المنخفضة الناشئ',
         ],
         cta: 'زيارة Drone Tech',
-        url: 'https://dronetech.eg/',
+        url: '#',
         badge: 'الشريك الرئيسي في قطاع الطيران وتكنولوجيا الطائرات بدون طيار',
       },
       partner: {
