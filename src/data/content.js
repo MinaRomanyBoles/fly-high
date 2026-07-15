@@ -223,7 +223,7 @@ export const content = {
       eyebrow: 'READY TO',
       title: 'FLY HIGH?',
       subtitle: 'When The Trust is a Must',
-      button: 'SCHEDULE A FREE STRATEGY SESSION',
+      button: 'SCHEDULE A FREE CONSULTATION SESSION',
     },
     footer: {
       description:
@@ -627,7 +627,7 @@ export const content = {
       eyebrow: 'مستعد',
       title: 'للتحليق؟',
       subtitle: 'عندما يكون الثقة ضرورة',
-      button: 'احجز جلسة استراتيجية مجانية',
+      button: 'احجز جلسة استشارة مجانية',
     },
     footer: {
       description: 'الشركة الرائدة في مصر للإعلان الجوي وحلول الإعلام. نجمع خبرة الطيران مع الإبداع الإعلامي.',
@@ -802,7 +802,7 @@ export const content = {
         ],
         cta: 'زيارة Drone Tech',
         url: 'https://dronetech.eg/',
-        badge: 'شريك جوي استراتيجالشريك الرئيسي في قطاع الطيران وتكنولوجيا الدرون',
+        badge: 'الشريك الرئيسي في قطاع الطيران وتكنولوجيا الطائرات بدون طيار',
       },
       partner: {
         eyebrow: 'شركاؤنا',

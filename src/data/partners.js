@@ -15,7 +15,7 @@ export const commercialPartners = [
 ];
 
 export const flyPartners = [
-  { name: 'Drone Tech', src: '/images/White.png', featured: true },
+  { name: 'TP', src: encodePath('partner logos 1', 'tp.jpg') },
   { name: 'Innox Designs', src: encodePath('partner logos 1', '262025637_1704865276535137_6385091744149836263_n.jpg') },
   { name: 'CA', src: encodePath('partner logos 1', 'unnamed.png') },
   { name: 'Goldy', src: encodePath('partner logos 1', '455865377_2306981849683421_9222395338765210187_n.jpg') },
